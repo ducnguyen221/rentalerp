@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đăng nhập hệ thống RentalERP AI</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#243B6B",
+                        "accent": "#11B5A4",
+                        "background-dark": "#0a0c10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tech-gradient {
+            background: linear-gradient(135deg, rgba(36, 59, 107, 0.92) 0%, rgba(17, 181, 164, 0.6) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-white antialiased min-h-screen relative overflow-x-hidden">
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmt6BirVSCbfSWIZT14cKDsFiS1Zt98oj0ZqFTl5MWRFPoyeWMiIgr0kvbPkaKjaWV4UEnO0iutUdOuRhhbaC1nsLGWPO8kybp-Mb1DsAXhQDA-ZbtOk09zrzigKe5QzzBQHXGz_XQj8EykoXBOvYFDshwwEPv3bUkbpzUDRgcqt2mrOJR7ngYc59FoN5bvHEZBjxuuPPL_EkmIxjyljwTt8QQEQ37fSYk9ORx7r0jmjJ8hx5S8h080aqNuNrt2m3DIeG3eFc0FLc");'></div>
+<div class="absolute inset-0 tech-gradient z-10"></div>
+<div class="absolute inset-0 bg-black/40 z-10"></div>
+</div>
+<div class="relative z-20 min-h-screen flex flex-col lg:flex-row w-full">
+<div class="flex-1 flex flex-col justify-end lg:justify-center p-8 lg:p-16 max-w-3xl">
+<div class="mb-auto lg:mb-12">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl">
+<svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 9L12 2L21 9V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V9Z" stroke="#11B5A4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M9 21V12H15V21" opacity="0.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<path d="M7 14C7 14 8.5 12.5 10 12.5C11.5 12.5 12.5 14 14 14C15.5 14 17 12.5 17 12.5" opacity="0.8" stroke="#11B5A4" stroke-linecap="round" stroke-width="1.5"></path>
+<circle cx="12" cy="7" fill="#11B5A4" r="1.5"></circle>
+</svg>
+</div>
+<span class="text-white text-3xl font-bold tracking-tight">RentalERP<span class="text-accent">AI</span></span>
+</div>
+</div>
+<div class="hidden lg:block">
+<h2 class="text-white text-5xl font-bold leading-[1.1] mb-6 drop-shadow-lg">
+                    Nâng tầm quản lý <br/>bất động sản của bạn.
+                </h2>
+<p class="text-white/80 text-xl font-light leading-relaxed max-w-lg mb-12">
+                    Giải pháp toàn diện giúp tối ưu hóa quy trình vận hành, quản lý cư dân và tài chính minh bạch với sức mạnh từ AI.
+                </p>
+<div class="inline-flex items-center gap-4 p-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl">
+<div class="flex -space-x-3">
+<img alt="" class="w-11 h-11 rounded-full border-2 border-[#11B5A4] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDACN8rruQper8uw2da0V2lohKdwiqj5arYBYWVf1z46yzvCgSFEN6hcdrTOSJpnlGcIGGyZ78dlX-EaeDHlD1fmAuAlJxTYmr11jouZKc-nBWQyDxN0SNatlug7UEL-XTqjkkDRE3kxeDp5zk8O2gD6iwmthiNBz7ZuLcJLd8r562JOBV8zMd5zgt0nqr8mpC_-plf0VW9XGF6pQbNc45hp97-ARWD1ol6cRCPxaLt4APSmPlCna6kiMV5_SKY6Yww6Bdiv-yZ2RA"/>
+<img alt="" class="w-11 h-11 rounded-full border-2 border-[#11B5A4] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyxjAhIzwQhEYHRlCNYdE6zD7RqYfqL7EQj8g1sEkxGAAbiITna7ELVlda5V2Oq16zOHKbDv8Qj1C31bWU7fZbdFGKOYCFXM-Ddb0d7gRiQcqPSA2XDrZ2KcftMkR6hSTygG0en0Kui2kpriXzYiMX-d13_h-bZu4o9hGKitie4Ra4WJ61AH9ocCp78ugqUuNCrTZMUvF-L3lOuXrsVNaxuLfjrlbz2dDcOuFx6BM6e922D9Dvj7R3nflwcldFfkl6Z3NFqURtv3g"/>
+<img alt="" class="w-11 h-11 rounded-full border-2 border-[#11B5A4] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5N-uIkrKw4g4kRCObKoVWUBb3iJNjn_0frqT003KDcxQ19hMfPEwJ5UsJFl5SirWy46jfhm0k8juAfkJSRPQ7Wso7XP40rRipoRsz1Ss3Z_u3Wc5vzDV_Kp81bOztJMdmPoCuSPuD0rrJ9M-7-tdQ9yNf6Fy_ux4s22yq6cY4KDMeP0yazljmtFEF5DAkh7HVpUrqsOGwdoiF91cTlcWxO_PjgW9pKbQulRHAOtNlT2i3syKvw8aXvYGugTBc2a5S8ahD8j0qZY8"/>
+</div>
+<div class="flex flex-col pr-4">
+<span class="text-white text-sm font-semibold">Tin dùng bởi 500+ doanh nghiệp</span>
+<div class="flex text-accent text-xs mt-0.5">
+<span class="material-symbols-outlined text-[16px] fill-1">star</span>
+<span class="material-symbols-outlined text-[16px] fill-1">star</span>
+<span class="material-symbols-outlined text-[16px] fill-1">star</span>
+<span class="material-symbols-outlined text-[16px] fill-1">star</span>
+<span class="material-symbols-outlined text-[16px] fill-1">star</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 md:p-12">
+<div class="w-full max-w-[480px] glass-card p-8 md:p-12 rounded-[2rem] shadow-2xl flex flex-col">
+<div class="lg:hidden flex items-center gap-2 mb-10 justify-center">
+<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 9L12 2L21 9V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V9Z" stroke="#11B5A4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-2xl font-bold tracking-tight">RentalERP<span class="text-accent">AI</span></span>
+</div>
+<div class="flex flex-col gap-2 mb-10 text-center lg:text-left">
+<h1 class="text-white tracking-tight text-3xl font-bold leading-tight">Đăng nhập hệ thống</h1>
+<p class="text-gray-400 text-base font-normal leading-normal">Quản lý bất động sản hiệu quả và chuyên nghiệp.</p>
+</div>
+<form action="#" class="flex flex-col gap-6" method="POST">
+<label class="flex flex-col w-full gap-2">
+<span class="text-gray-300 text-sm font-semibold leading-normal ml-1">Email</span>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-xl text-white bg-white/5 focus:outline-0 focus:ring-2 focus:ring-accent/30 border border-white/10 hover:border-white/20 h-14 placeholder:text-gray-500 px-5 text-base font-normal transition-all" name="email" placeholder="name@company.com" type="email" value=""/>
+</label>
+<label class="flex flex-col w-full gap-2">
+<span class="text-gray-300 text-sm font-semibold leading-normal ml-1">Mật khẩu</span>
+<div class="relative flex w-full flex-1 items-stretch">
+<input class="form-input flex w-full min-w-0 flex-1 rounded-xl text-white bg-white/5 focus:outline-0 focus:ring-2 focus:ring-accent/30 border border-white/10 hover:border-white/20 h-14 placeholder:text-gray-500 pl-5 pr-14 text-base font-normal transition-all" name="password" placeholder="••••••••" type="password" value=""/>
+<div class="absolute right-0 top-0 bottom-0 flex items-center justify-center pr-5 cursor-pointer text-gray-500 hover:text-accent transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">visibility_off</span>
+</div>
+</div>
+</label>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-5 h-5 rounded border-white/10 text-accent focus:ring-accent focus:ring-offset-0 bg-white/5 dark:bg-white/5" type="checkbox"/>
+<span class="text-sm text-gray-400 group-hover:text-gray-200 transition-colors select-none">Ghi nhớ đăng nhập</span>
+</label>
+<a class="text-sm font-medium text-accent hover:text-accent/80 transition-colors" href="#">Quên mật khẩu?</a>
+</div>
+<button class="flex w-full items-center justify-center rounded-xl bg-accent h-14 mt-2 px-4 text-primary text-lg font-bold hover:brightness-110 shadow-[0_0_20px_rgba(17,181,164,0.3)] active:scale-[0.98] transition-all">
+                        Đăng nhập
+                    </button>
+<div class="flex flex-col gap-6 mt-4">
+<div class="relative flex items-center justify-center">
+<div class="h-px bg-white/10 w-full absolute"></div>
+<span class="bg-[#111827]/80 backdrop-blur px-3 text-xs text-gray-500 relative z-10 font-medium tracking-widest uppercase">Hoặc đăng nhập với</span>
+</div>
+<div class="flex flex-col gap-3">
+<button class="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 h-12 px-4 text-white text-base font-medium hover:bg-white/10 transition-colors focus:ring-2 focus:ring-white/10" type="button">
+<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.52 12.29c0-.85-.08-1.68-.21-2.48H12v4.7h6.46c-.28 1.48-1.12 2.73-2.39 3.58v2.98h3.87c2.26-2.09 3.57-5.17 3.57-8.78z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.87-2.98c-1.07.72-2.44 1.15-4.06 1.15-3.13 0-5.78-2.11-6.73-4.96H1.27v3.12C3.26 21.3 7.31 24 12 24z" fill="#34A853"></path>
+<path d="M5.27 14.29c-.24-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.59H1.27C.46 8.21 0 10.05 0 12s.46 3.79 1.27 5.41l4-3.12z" fill="#FBBC05"></path>
+<path d="M12 4.79c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.18 15.24 0 12 0 7.31 0 3.26 2.7 1.27 6.59l4 3.12c.95-2.85 3.6-4.96 6.73-4.96z" fill="#EA4335"></path>
+</svg>
+                                Tiếp tục với Google
+                            </button>
+<button class="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 h-12 px-4 text-white text-base font-medium hover:bg-white/10 transition-colors focus:ring-2 focus:ring-white/10" type="button">
+<svg class="w-5 h-5 text-[#1877F2]" fill="currentColor" viewBox="0 0 24 24">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+</svg>
+                                Tiếp tục với Facebook
+                            </button>
+</div>
+</div>
+</form>
+<div class="mt-12 text-center">
+<p class="text-[11px] text-gray-500 uppercase tracking-widest font-semibold opacity-80">
+                        © 2024 RentalERP AI. All rights reserved.
+                        <br/>
+<span class="flex items-center justify-center gap-4 mt-2 normal-case tracking-normal">
+<a class="hover:text-accent transition-colors" href="#">Điều khoản sử dụng</a>
+<span class="text-white/10">|</span>
+<a class="hover:text-accent transition-colors" href="#">Chính sách bảo mật</a>
+</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
