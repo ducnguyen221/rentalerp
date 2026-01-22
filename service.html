@@ -1,0 +1,246 @@
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dịch vụ tiện ích - RentalERP Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0D5C54", // Deep Teal
+                        "accent": "#11B5A4",  // Accent Teal
+                        "light-teal": "#F0F9F8",
+                        "background-light": "#F8FAFA",
+                        "neutral-dark": "#1A2E2C",
+                        "neutral-gray": "#64748B",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "card": "14px",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Inter', sans-serif;
+                @apply bg-background-light text-neutral-dark;
+            }
+        }
+        .main-layout {
+            height: calc(100vh - 80px);
+        }
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+        }
+        .glass-sidebar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0D5C5420;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-hidden flex flex-col">
+<header class="h-20 shrink-0 z-50 bg-white border-b border-gray-100">
+<div class="h-full px-8 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl">apartment</span>
+</div>
+<span class="text-primary text-xl font-bold tracking-tight">RentalERP <span class="text-accent">AI</span></span>
+</div>
+<div class="relative hidden xl:block w-80">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-neutral-gray text-xl">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-xl bg-gray-50/50 text-sm focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all" placeholder="Tìm dịch vụ bạn cần..." type="text"/>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-neutral-gray text-sm font-medium hover:text-primary transition-colors" href="#">Tổng quan</a>
+<a class="text-neutral-gray text-sm font-medium hover:text-primary transition-colors" href="#">Hợp đồng</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Dịch vụ</a>
+<a class="text-neutral-gray text-sm font-medium hover:text-primary transition-colors" href="#">Hóa đơn</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-neutral-gray hover:bg-gray-100 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<div class="h-8 w-px bg-gray-100 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-primary">Nguyễn Minh</p>
+<p class="text-[10px] text-neutral-gray">Phòng 402 - Building A</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-light-teal border border-accent/20 flex items-center justify-center text-primary font-bold">
+                    NM
+                </div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden main-layout">
+<main class="flex-1 overflow-y-auto bg-gray-50/30">
+<div class="p-8 max-w-[1200px] mx-auto">
+<div class="flex justify-between items-end mb-10">
+<div>
+<h1 class="text-3xl font-bold text-primary tracking-tight">Dịch vụ tiện ích</h1>
+<p class="text-neutral-gray text-sm mt-2">Nâng tầm trải nghiệm sống với các dịch vụ chuyên nghiệp từ đối tác của RentalERP.</p>
+</div>
+<div class="flex gap-2 bg-white p-1 rounded-lg border border-gray-100 shadow-sm">
+<button class="px-4 py-1.5 text-xs font-bold bg-primary text-white rounded-md">Tất cả</button>
+<button class="px-4 py-1.5 text-xs font-medium text-neutral-gray hover:bg-gray-50 rounded-md">Phổ biến</button>
+<button class="px-4 py-1.5 text-xs font-medium text-neutral-gray hover:bg-gray-50 rounded-md">Đã đặt</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
+<div class="relative h-48 w-full">
+<img alt="Food Delivery" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CGeyUmDfV_YV0fII8DhWj0OKaIoMMa2kqBubYmUmTom_lXFnluYMYaJ-_LtdRM6hqoHoV47hXHy2_ZXzMmNz0t1gMSSmxWS59y2z7hp0ZbJwuBvBu0IK_1FfuyXObGRn5sqEDWZaEQbOBKyw-76FdM4tLfpzyXCr2BGJeQTTJGHxZilqfztlXWtyK4Vxd24WhRUIgr_MCLYcY_o2hEnsSfNa_gI2FaOo0xcvlItu5NfN5BsVErMuqUi6rKQRps6qUlaaM7EdxUo"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-accent text-white text-[10px] font-bold uppercase tracking-wider rounded-full shadow-lg">Miễn phí giao hàng</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-primary mb-2">Giao nhận thực phẩm</h3>
+<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Đi chợ hộ và giao thực phẩm tươi sống tận cửa phòng. Tiết kiệm thời gian mỗi ngày.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-accent font-bold">Miễn phí</span>
+<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+</div>
+</div>
+</article>
+<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
+<div class="relative h-48 w-full">
+<img alt="Cleaning Service" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpg9qU5sGAs42ztmWmYL2rIfXFjbKBw1Vq3wSUK40kgEz69Vt7BJ6noRcGkE_mUCLxo5GcL-B9bp9ks_Hw6qZIYK32ANNyfHJZLVdJWhqWlm28aqRVMDIGljW66jWKxXzz8SG-bhM_OYzPGboQcEzQotyidRkzzLRxTeGg-sCEIrlh_8Edj_fDSoHCOZ_xYQyyE6Pa8IlgtviWq4JsOy4CBAj032_v0lM3SW5HmLbPAwsAuMp1f17PtgKWuP__sVlaqgDKvgkLons"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-primary mb-2">Dọn dẹp vệ sinh</h3>
+<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Dịch vụ dọn dẹp định kỳ hoặc theo giờ bởi đội ngũ chuyên nghiệp, tận tâm.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-primary font-bold">Từ 150.000đ</span>
+<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+</div>
+</div>
+</article>
+<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
+<div class="relative h-48 w-full">
+<img alt="Maintenance" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf_gUv2SNm11Q3qxgSa7024waObwkKPoKxVI7BMsl1GpJD1cdatl-Xu-ZLUu9NjvKR1CulLliLo7Nxd_Q1AE33VKn_8w5K4dxyQ5RmWiFlV_5meAno3VrMGgCzoSMANwolvN4gFOdDhF3JDwiLJdmF0w1ffCmQ5vs4SNmxOjfyZ5ooR8DYBXucUmL8hpk6NVe5ITLm5KwiKfHxTC4HcGR0S9xCtwP9xKod499hwoUcwigYeQDgiy1lIqr58_-njhr9yHlQyVoFbQc"/>
+<div class="absolute top-4 right-4">
+<span class="px-3 py-1 bg-primary/90 text-white text-[10px] font-bold uppercase rounded-full backdrop-blur-sm">Hỗ trợ 24/7</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-primary mb-2">Bảo trì sửa chữa</h3>
+<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Xử lý nhanh các vấn đề điện nước, thiết bị gia dụng chỉ trong 30 phút.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-primary font-bold italic text-sm">Báo giá sau khảo sát</span>
+<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+</div>
+</div>
+</article>
+<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
+<div class="relative h-48 w-full">
+<img alt="Laundry Service" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDquQAN2jFJnIGWi0TOG-7o27qshj7ATknfKz_mJZEJap2VL5BrpxRgK-ROM7eZZYm-DVvXYvSMlwcb0ADcUaZun0_OiPPgGzIE7Ob77vP9TpCWsr8DGCHglT09dmc4e43QaqxQ7RNdGE41MMJSL-l96-VpJfSEnwKC950UROVbpSI3aZIu4PiuTlePEOJi6RYDvgbHeM5Of3Y7zXtMucWQqK3CWQ5IGl1brejBIGvg05Eio6aEnfI1Ngklzllq6QIUhjAeaco3MTQ"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-primary mb-2">Giặt ủi cao cấp</h3>
+<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Giặt sấy, giặt hấp bảo vệ chất liệu vải chuyên sâu. Giao nhận trong 24h.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-primary font-bold">30.000đ/kg</span>
+<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+</div>
+</div>
+</article>
+<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
+<div class="relative h-48 w-full">
+<img alt="Pet Care" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW4bD5z2qT1VoropcU46V4ww5Fojt2Ym_mLaGW2TEWnBOfPxyfIKlGCiIyFWil0WDma_0i5b4J6Q6iDr-v4u0l-4L6xPs0P1HHy74SN0syMDE1plo9jxzNSI0BV-vKPU0TwiNlS9Lc-RxRpbEYA69P5xgwcNRpD8VZajeDDZYtZSFt8JmBpvPusFqjlAzkBV6bcmech5SVeKyjLuSYKnyhuIed3gYqpzJefUrVveNPBd0KuMVo3NxOlRBwahao8gifHJjj1nvBt5k"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="text-xl font-bold text-primary mb-2">Trông giữ thú cưng</h3>
+<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Chăm sóc, dắt đi dạo và cho thú cưng ăn khi bạn vắng nhà hoặc bận rộn.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-primary font-bold">Từ 100.000đ</span>
+<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+</div>
+</div>
+</article>
+<article class="border-2 border-dashed border-gray-200 rounded-[14px] flex flex-col items-center justify-center p-8 text-center bg-gray-50/50 hover:border-accent transition-colors group cursor-default">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-accent">add_circle</span>
+</div>
+<p class="text-sm font-bold text-gray-400 group-hover:text-primary">Dịch vụ mới sắp ra mắt</p>
+<p class="text-[11px] text-gray-400 mt-1 uppercase tracking-wider">Stay Tuned</p>
+</article>
+</div>
+</div>
+</main>
+<aside class="w-80 shrink-0 bg-white border-l border-gray-100 overflow-y-auto hidden lg:block">
+<div class="p-6 space-y-8">
+<section>
+<h2 class="text-[11px] font-bold text-neutral-gray uppercase tracking-[0.2em] mb-6">Trợ lý RentalERP AI</h2>
+<div class="bg-light-teal border border-accent/20 rounded-2xl p-5 shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<div class="bg-primary text-white p-2 rounded-xl">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-primary">Chat thông minh</h4>
+<p class="text-[10px] text-accent font-medium uppercase tracking-wider">Online 24/7</p>
+</div>
+</div>
+<p class="text-xs text-primary/70 leading-relaxed mb-4">"Chào Minh, mình có thể giúp bạn đặt lịch dọn dẹp hay báo hỏng thiết bị không?"</p>
+<button class="w-full py-2.5 bg-primary hover:bg-[#08453f] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">chat</span>
+                        Bắt đầu hỗ trợ
+                    </button>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-[11px] font-bold text-neutral-gray uppercase tracking-[0.2em]">Ghi chú yêu cầu</h2>
+<span class="material-symbols-outlined text-neutral-gray text-sm cursor-help">info</span>
+</div>
+<div class="space-y-4">
+<textarea class="w-full bg-gray-50 border-gray-200 rounded-xl text-xs py-3 px-4 focus:ring-accent focus:border-accent min-h-[140px] placeholder-neutral-gray/40 resize-none shadow-inner" placeholder="Mô tả chi tiết yêu cầu của bạn (Ví dụ: Thời gian dọn dẹp, mã giảm giá, lưu ý đặc biệt...)"></textarea>
+<div class="pt-2 border-t border-gray-50">
+<p class="text-xs font-bold text-primary mb-3">Liên hệ trực tiếp</p>
+<a class="flex items-center gap-4 p-3 border border-gray-100 rounded-xl hover:border-accent hover:bg-light-teal transition-all group" href="tel:19001234">
+<div class="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl">phone_in_talk</span>
+</div>
+<div>
+<p class="text-[10px] text-neutral-gray">Hotline vận hành</p>
+<p class="text-sm font-bold text-primary tracking-tight">1900 1234</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+</div>
+</aside>
+</div>
+
+</body></html>
