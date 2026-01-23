@@ -1,0 +1,361 @@
+<html class="light scroll-smooth" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh sách Dự án - RentalERP AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#11B5A4",
+                        "accent-teal": "#11B5A4",
+                        "deep-teal": "#0D5C54",
+                        "background-light": "#F8FAFC",
+                        "highlight-red": "#FF4D4F"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        lg: "12px",
+                        xl: "14px",
+                        '2xl': '14px',
+                        full: "9999px"
+                    }
+                }
+            }
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Inter', sans-serif;
+                @apply bg-[#F8FAFC] text-[#0D5C54] antialiased;
+            }
+        }
+        .btn-teal-fill {
+            @apply px-8 py-4 rounded-[14px] font-bold text-sm transition-all duration-300 bg-[#11B5A4] text-white hover:bg-[#0D5C54] active:scale-[0.98] uppercase tracking-widest shadow-lg shadow-[#11B5A4]/20;
+        }
+        .btn-teal-outline {
+            @apply px-8 py-4 rounded-[14px] font-bold text-sm transition-all duration-300 bg-white/10 backdrop-blur-md border border-white/30 text-white hover:bg-white hover:text-[#0D5C54] active:scale-[0.98] uppercase tracking-widest;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            @apply text-[#11B5A4] font-bold border-b-2 border-[#11B5A4] pb-1;
+        }
+        .promo-tag {
+            @apply flex items-center gap-2 bg-[#FF4D4F] text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(13, 92, 84, 0.4) 0%, rgba(13, 92, 84, 0.8) 100%);
+        }
+        .stat-card {
+            @apply backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-[14px] flex flex-col gap-1 min-w-[140px];
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+<header class="h-20 shrink-0 z-[100] bg-white border-b border-gray-100 flex items-center sticky top-0 shadow-sm">
+<div class="w-full px-10 flex items-center justify-between">
+<div class="flex items-center gap-16">
+<div class="flex items-center gap-2.5">
+<div class="text-[#11B5A4]">
+<span class="material-symbols-outlined text-3xl leading-none">account_tree</span>
+</div>
+<span class="text-[#0D5C54] text-xl font-black tracking-tighter uppercase">RentalERP<span class="text-[#11B5A4]">AI</span></span>
+</div>
+<nav class="hidden lg:flex items-center gap-10">
+<a class="text-[#0D5C54]/60 text-sm font-semibold hover:text-[#11B5A4] transition-colors" href="/home">Trang chủ</a>
+<a class="active-nav text-sm" href="/bds">Dự án</a>
+<a class="text-[#0D5C54]/60 text-sm font-semibold hover:text-[#11B5A4] transition-colors" href="/booking">Đặt phòng</a>
+<a class="text-[#0D5C54]/60 text-sm font-semibold hover:text-[#11B5A4] transition-colors" href="/service">Dịch vụ</a>
+<a class="text-[#0D5C54]/60 text-sm font-semibold hover:text-[#11B5A4] transition-colors" href="/contact">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<a class="promo-tag group" href="#">
+<span class="material-symbols-outlined text-sm">local_activity</span>
+<span class="text-xs font-bold tracking-tight">Ưu đãi hè rực rỡ - Nhận ngay voucher 500k</span>
+</a>
+<button class="px-6 py-2 rounded-[14px] font-bold text-xs border border-[#0D5C54]/20 text-[#0D5C54] hover:bg-gray-50 transition-all uppercase tracking-wider">Đăng nhập</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<section class="relative h-[90vh] w-full overflow-hidden bg-[#0D5C54]">
+<div class="absolute inset-0">
+<img alt="The Emerald Residency" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBniWPKi7orTC6d33yKCiJ0O297vwimHlLQlvNf2Sp6r7MhsEtO_EkFadJc4vrmXMrGZz6fJdKXEusFHy3sSzl9xRFFxriNJObN6EfkiusT1dPG8uB0UPskqDOQoaavJaW8OZHesMCDi_Aa1_QJh2JLhgKu84UWBWmao1DsK8x_6m0SGL6Fs_ElEPSa0ZLu2dEBWuus84VJw-flNQ-w4W1zgxcCcgWJFaqL3warXFLBxpyuLD0MjpFk_aFhozL_FVAGifRahMPPuXc"/>
+<div class="hero-gradient absolute inset-0"></div>
+</div>
+<div class="relative h-full max-w-7xl mx-auto px-10 flex flex-col justify-end pb-32">
+<div class="max-w-4xl space-y-10">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="w-12 h-[2px] bg-[#11B5A4]"></span>
+<span class="text-[#11B5A4] font-bold tracking-[0.4em] uppercase text-sm">Dự án tâm điểm</span>
+</div>
+<h1 class="text-8xl font-black text-white leading-[0.9] tracking-tighter">The Emerald<br/>Residency</h1>
+<div class="flex items-center gap-3 text-white/90 text-lg">
+<span class="material-symbols-outlined text-[#11B5A4]">location_on</span>
+<span class="font-light tracking-wide italic">Bán đảo Thủ Thiêm, Thành phố Thủ Đức</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-6">
+<div class="stat-card">
+<span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Căn hộ</span>
+<span class="text-white text-3xl font-black">450</span>
+</div>
+<div class="stat-card">
+<span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Biệt thự</span>
+<span class="text-white text-3xl font-black">24</span>
+</div>
+<div class="stat-card">
+<span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Hồ bơi</span>
+<span class="text-white text-3xl font-black">03</span>
+</div>
+<div class="stat-card">
+<span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">Diện tích</span>
+<span class="text-white text-3xl font-black">12ha</span>
+</div>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<button class="btn-teal-fill flex items-center gap-3">
+<span>Xem chi tiết dự án</span>
+<span class="material-symbols-outlined">arrow_outward</span>
+</button>
+<button class="btn-teal-outline flex items-center gap-3">
+<span class="material-symbols-outlined">play_circle</span>
+<span>Xem Trailer</span>
+</button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-16 right-10 flex flex-col items-end gap-8">
+<div class="flex items-center gap-6">
+<button class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0D5C54] transition-all">
+<span class="material-symbols-outlined">keyboard_arrow_left</span>
+</button>
+<button class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0D5C54] transition-all">
+<span class="material-symbols-outlined">keyboard_arrow_right</span>
+</button>
+</div>
+<div class="flex gap-3">
+<div class="w-16 h-1 bg-[#11B5A4] rounded-full"></div>
+<div class="w-16 h-1 bg-white/20 rounded-full"></div>
+<div class="w-16 h-1 bg-white/20 rounded-full"></div>
+</div>
+</div>
+</section>
+<section class="py-24 px-10 max-w-7xl mx-auto">
+<div class="flex items-end justify-between mb-16">
+<div class="space-y-3">
+<div class="flex items-center gap-2 text-[#11B5A4]">
+<span class="material-symbols-outlined text-sm">explore</span>
+<span class="text-[10px] font-black uppercase tracking-[0.2em]">Explore</span>
+</div>
+<h2 class="text-4xl font-black text-[#0D5C54] tracking-tight">Khám phá các dự án</h2>
+<p class="text-[#0D5C54]/60 font-medium text-lg">Tìm kiếm không gian sống lý tưởng phù hợp với phong cách của bạn.</p>
+</div>
+<div class="flex items-center gap-4 pb-2">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-[#0D5C54]/5 text-sm font-bold text-[#0D5C54] rounded-full hover:bg-[#11B5A4] hover:text-white transition-all">
+<span class="material-symbols-outlined text-lg">tune</span>
+<span>Bộ lọc dự án</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<div class="group cursor-pointer bg-white rounded-[14px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+<div class="relative h-72 overflow-hidden">
+<img alt="Green Valley" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LdyHEDxvVa6L6-iInrtHroEYjoyMOqoFKyUMzqPY86R_ZC0l1a3Qb3JWylr6jidRzGQvmXnHMnkN2fQRQlGZF3MDEIQ2LV4jMkXN11TAdqDv_oxekurW1mpodM00EUGVvMVi1o362jXlrHIZlCIGbnY2UrBwULFCV_rfeVSD0LaeTyD3JhPjd1mIzG1QBM05JFCEqO6Mp-HGwmaSd3YMUb2aQ6JIIdnGl_s6_s6bI4uGizU7TN30pDG-BniJ2X2wPx6OkYvkzv4"/>
+<div class="absolute top-5 left-5">
+<span class="bg-white/95 backdrop-blur px-4 py-1.5 rounded-full text-[10px] font-bold text-[#0D5C54] uppercase tracking-wider shadow-sm">Đang mở bán</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-black text-[#0D5C54] group-hover:text-[#11B5A4] transition-colors leading-tight">Green Valley Complex</h3>
+<div class="flex items-center gap-2 text-[#0D5C54]/50 text-sm mt-2">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span class="font-medium">Phú Mỹ Hưng, Quận 7, TP. HCM</span>
+</div>
+<div class="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#0D5C54]/40 uppercase tracking-widest">Giá khởi điểm</span>
+<span class="text-[#11B5A4] text-xl font-black">Từ 4.5 Tỷ</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-[#0D5C54]/40 bg-[#0D5C54]/5 px-3 py-1 rounded-full uppercase">240 Căn hộ</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer bg-white rounded-[14px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+<div class="relative h-72 overflow-hidden">
+<img alt="The Landmark" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC52_NqcPesHYLm5lDcTcJlf1MadnpxMxa57QEuNtb9HxBK6-8_-il1o-SvMVpDgzUfx3tvgLsrdOYItdZQkCQydAupQJybixHPEvzFSiTlyBqFeXCYYlnTzeEy3YiNj3dMdbqiLsU1V8sJdXXrdxPHVO_IATH2rw4VsuJjS3q48iMmy5NEAwQOrUEOlb2eWHteW8K3OkT6-yP3ZT2Dl7riIUZTPZg-Uywo1A62TnPjmxc2xv_s_Sz00R_KHXlAaIXg0QPHBsPRhLE"/>
+<div class="absolute top-5 left-5">
+<span class="bg-[#11B5A4] px-4 py-1.5 rounded-full text-[10px] font-bold text-white uppercase tracking-wider shadow-md">Dự án mới</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-black text-[#0D5C54] group-hover:text-[#11B5A4] transition-colors leading-tight">The Landmark Villa</h3>
+<div class="flex items-center gap-2 text-[#0D5C54]/50 text-sm mt-2">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span class="font-medium">Thảo Điền, Quận 2, TP. HCM</span>
+</div>
+<div class="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#0D5C54]/40 uppercase tracking-widest">Giá khởi điểm</span>
+<span class="text-[#11B5A4] text-xl font-black">Từ 15 Tỷ</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-[#0D5C54]/40 bg-[#0D5C54]/5 px-3 py-1 rounded-full uppercase">12 Biệt thự</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer bg-white rounded-[14px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+<div class="relative h-72 overflow-hidden">
+<img alt="Urban Studio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvvPQRqPE_IX8sEi5C08a6txqn8IZ1Kf_bLmITLY7upUF_zv971B7Qc51scgb5pFOrsf7KrM-MxUiQL8L4RGYiHLd2nsVB3EFyyt43CJM8GqCnlzw_sWj4bw2Ov7DfktUjqjk_K3_takmVoaULjTt84XtOjlRQZhr6moFiKJJdNspKu_Pav7Itov7zL8RDJF9T62sf-7zAMZleif0ndph5krVc2zNwe-FnhO3O2TjKm1y1vAZi_yGjfkal20RWG0U5SVmRExnCfZc"/>
+<div class="absolute top-5 left-5">
+<span class="bg-white/95 backdrop-blur px-4 py-1.5 rounded-full text-[10px] font-bold text-[#0D5C54] uppercase tracking-wider shadow-sm">Ưu đãi hè</span>
+</div>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-black text-[#0D5C54] group-hover:text-[#11B5A4] transition-colors leading-tight">Urban Studio Suites</h3>
+<div class="flex items-center gap-2 text-[#0D5C54]/50 text-sm mt-2">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span class="font-medium">Đa Kao, Quận 1, TP. HCM</span>
+</div>
+<div class="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#0D5C54]/40 uppercase tracking-widest">Giá khởi điểm</span>
+<span class="text-[#11B5A4] text-xl font-black">Từ 3.2 Tỷ</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-[#0D5C54]/40 bg-[#0D5C54]/5 px-3 py-1 rounded-full uppercase">85 Căn hộ</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer bg-white rounded-[14px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+<div class="relative h-72 overflow-hidden">
+<img alt="Riverside Heights" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE_PX9zH42tP1diSyZVYTeSGNR9Ocvfq4XBl-YDavVmRDm_Z_L18sU6xMDv3GepIIFekKyg4UWhlEWY-U2KHMYNGYE_k5bRPqBJwPNS-pEOiambO6g77PekApMg2q_eSSCVjov7cbEowjddi8TLhqcjxYLN5Ohh6J9CQYMSqvotoxiQWYlB_91mQmbk5Yh7noMyH4qUiF1vMenMsY-OiQIo1lbzq3iMW-l8iniHuqaBOzmo8HFhLZJOr680DvX26ArbuvYX7h2tJ4"/>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-black text-[#0D5C54] group-hover:text-[#11B5A4] transition-colors leading-tight">Riverside Heights</h3>
+<div class="flex items-center gap-2 text-[#0D5C54]/50 text-sm mt-2">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span class="font-medium">Bình Thạnh, TP. HCM</span>
+</div>
+<div class="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#0D5C54]/40 uppercase tracking-widest">Giá khởi điểm</span>
+<span class="text-[#11B5A4] text-xl font-black">Từ 5.8 Tỷ</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-[#0D5C54]/40 bg-[#0D5C54]/5 px-3 py-1 rounded-full uppercase">112 Căn hộ</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer bg-white rounded-[14px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+<div class="relative h-72 overflow-hidden">
+<img alt="The Zen Garden" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuButXN-4Fr-tXkw8Cvb1lq3R4JWlLDnhf5Gryrqhx1BV_z2flM32fc74ux7MZUph_9JEVq08E_x48H1UlWnh-bq8vA2dVYd-wy7-YL387XtLla9V_W40yZTaf0iGxZHitDyrQ5GRP_5BEUeQgCagZPMDBM6EX_-m-KNx6xLc3ailEzB1ynCq1TipcXOZgzyn_Vjjv94HaYDSGKosyDoxACVB_hNIlGESsb28SJPkMSNzcupip0p_NWZQtnficYiL5OzHtzmnZ7I3sw"/>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-black text-[#0D5C54] group-hover:text-[#11B5A4] transition-colors leading-tight">The Zen Garden</h3>
+<div class="flex items-center gap-2 text-[#0D5C54]/50 text-sm mt-2">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span class="font-medium">Quận 9, TP. Thủ Đức</span>
+</div>
+<div class="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#0D5C54]/40 uppercase tracking-widest">Giá khởi điểm</span>
+<span class="text-[#11B5A4] text-xl font-black">Từ 4.2 Tỷ</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-[#0D5C54]/40 bg-[#0D5C54]/5 px-3 py-1 rounded-full uppercase">500+ Căn</span>
+</div>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer bg-white rounded-[14px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100">
+<div class="relative h-72 overflow-hidden">
+<img alt="Eco City" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPZloJozY51eugolJkk-sB5kH_q63cOBRnkPtM3_VUq0vUA8k1u4S3eK1H3QKafzb05oTzbjvfirtSEyW62k_ZIkVDTn0Iu23Umoud9okJd0fwAk2zP3IU97nbLNHm9GrdSvsSitRdo_G7Op613-eWZfRzlzfZWfsLI-pxwvl_0_onAxMJ_i9edyjiuyXT1hYvgk5RRg0K7XZ91d45Ns1mvYp7beHq8J_Er6-99Fyt6Z2Vc6K0B1-M5vPql4BUMkkywCjPWYhQrR0"/>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-black text-[#0D5C54] group-hover:text-[#11B5A4] transition-colors leading-tight">Eco City Smart Hub</h3>
+<div class="flex items-center gap-2 text-[#0D5C54]/50 text-sm mt-2">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span class="font-medium">Hóc Môn, TP. HCM</span>
+</div>
+<div class="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#0D5C54]/40 uppercase tracking-widest">Giá khởi điểm</span>
+<span class="text-[#11B5A4] text-xl font-black">Từ 2.8 Tỷ</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-[#0D5C54]/40 bg-[#0D5C54]/5 px-3 py-1 rounded-full uppercase">1200 Căn</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-20 flex justify-center">
+<button class="px-12 py-4 rounded-[14px] font-bold text-sm border-2 border-[#11B5A4] text-[#11B5A4] hover:bg-[#11B5A4] hover:text-white transition-all uppercase tracking-widest">Xem thêm dự án</button>
+</div>
+</section>
+</main>
+<footer class="bg-white border-t border-gray-100 py-16 px-10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="space-y-6">
+<div class="flex items-center gap-2.5">
+<div class="text-[#11B5A4]">
+<span class="material-symbols-outlined text-3xl leading-none">account_tree</span>
+</div>
+<span class="text-[#0D5C54] text-xl font-black tracking-tighter uppercase">RentalERP<span class="text-[#11B5A4]">AI</span></span>
+</div>
+<p class="text-[#0D5C54]/60 text-sm max-w-xs leading-relaxed">Hệ thống quản lý và vận hành bất động sản chuyên nghiệp ứng dụng công nghệ trí tuệ nhân tạo hàng đầu Việt Nam.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-16">
+<div class="space-y-5">
+<h4 class="text-[#0D5C54] font-bold text-xs uppercase tracking-widest">Dịch vụ</h4>
+<ul class="space-y-3 text-[#0D5C54]/60 text-sm font-semibold">
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Quản lý căn hộ</a></li>
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Quản lý dự án</a></li>
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Hỗ trợ chủ nhà</a></li>
+</ul>
+</div>
+<div class="space-y-5">
+<h4 class="text-[#0D5C54] font-bold text-xs uppercase tracking-widest">Về chúng tôi</h4>
+<ul class="space-y-3 text-[#0D5C54]/60 text-sm font-semibold">
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Câu chuyện</a></li>
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Tuyển dụng</a></li>
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Liên hệ</a></li>
+</ul>
+</div>
+<div class="space-y-5">
+<h4 class="text-[#0D5C54] font-bold text-xs uppercase tracking-widest">Pháp lý</h4>
+<ul class="space-y-3 text-[#0D5C54]/60 text-sm font-semibold">
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Điều khoản</a></li>
+<li><a class="hover:text-[#11B5A4] transition-colors" href="#">Bảo mật</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto border-t border-gray-100 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[#0D5C54]/40 text-xs font-bold uppercase tracking-wider">© 2023 RentalERP AI. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-[#0D5C54]/40 hover:text-[#11B5A4] transition-colors" href="#"><span class="material-symbols-outlined text-xl">language</span></a>
+<a class="text-[#0D5C54]/40 hover:text-[#11B5A4] transition-colors" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+</div>
+</div>
+</footer>
+
+</body></html>
