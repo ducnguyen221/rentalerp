@@ -1,8 +1,8 @@
 <html class="light" lang="vi"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Dịch vụ tiện ích - RentalERP Suite</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<title>Dịch vụ tiện ích | RENTALERPAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
@@ -13,17 +13,24 @@
                     colors: {
                         "primary": "#0D5C54", // Deep Teal
                         "accent": "#11B5A4",  // Accent Teal
-                        "light-teal": "#F0F9F8",
                         "background-light": "#F8FAFA",
+                        "background-dark": "#0A1F1D",
                         "neutral-dark": "#1A2E2C",
                         "neutral-gray": "#64748B",
+                        "promo-red": "#E11D48",
+                        "promo-pink": "#FFF1F2",
                     },
                     fontFamily: {
                         "sans": ["Inter", "sans-serif"],
                     },
                     borderRadius: {
                         "card": "14px",
+                        "sidebar": "14px",
                     },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
                 },
             },
         }
@@ -35,212 +42,456 @@
                 @apply bg-background-light text-neutral-dark;
             }
         }
-        .main-layout {
-            height: calc(100vh - 80px);
-        }
-        .service-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .service-card:hover {
-            transform: translateY(-4px);
-        }
-        .glass-sidebar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-        }
         ::-webkit-scrollbar {
-            width: 4px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: #0D5C5420;
+            background: #0D5C54;
             border-radius: 10px;
+        }
+        .filter-panel {
+            height: calc(100vh - 80px);
+        }
+        .content-stream {
+            height: calc(100vh - 80px);
+        }
+        .glass-ai-widget {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(17, 181, 164, 0.2);
+        }
+        .dark .glass-ai-widget {
+            background: rgba(13, 92, 84, 0.2);
+            border: 1px solid rgba(17, 181, 164, 0.1);
+        }
+        .immersive-card-overlay {
+            background: linear-gradient(to top, rgba(10, 31, 29, 0.95) 0%, rgba(10, 31, 29, 0.6) 40%, rgba(10, 31, 29, 0.1) 100%);
         }
     </style>
 </head>
 <body class="min-h-screen overflow-hidden flex flex-col">
-<header class="h-20 shrink-0 z-50 bg-white border-b border-gray-100">
+<header class="h-20 shrink-0 z-50 bg-white dark:bg-background-dark border-b border-gray-100 dark:border-teal-900/30">
 <div class="h-full px-8 flex items-center justify-between">
 <div class="flex items-center gap-12">
-<div class="flex items-center gap-2">
-<div class="bg-primary p-1.5 rounded-lg">
-<span class="material-symbols-outlined text-white text-2xl">apartment</span>
+<div class="flex items-center gap-2.5">
+<div class="bg-primary p-2 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-white text-2xl block">spa</span>
 </div>
-<span class="text-primary text-xl font-bold tracking-tight">RentalERP <span class="text-accent">AI</span></span>
-</div>
-<div class="relative hidden xl:block w-80">
-<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-neutral-gray text-xl">search</span>
-</div>
-<input class="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-xl bg-gray-50/50 text-sm focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all" placeholder="Tìm dịch vụ bạn cần..." type="text"/>
-</div>
+<span class="text-primary dark:text-white text-xl font-extrabold tracking-tighter">RENTALERPAI</span>
 </div>
 <nav class="hidden lg:flex items-center gap-8">
-<a class="text-neutral-gray text-sm font-medium hover:text-primary transition-colors" href="#">Tổng quan</a>
-<a class="text-neutral-gray text-sm font-medium hover:text-primary transition-colors" href="#">Hợp đồng</a>
-<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Dịch vụ</a>
-<a class="text-neutral-gray text-sm font-medium hover:text-primary transition-colors" href="#">Hóa đơn</a>
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/home">Trang chủ</a>
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/bds">Dự án</a>
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/booking">Đặt phòng</a>
+<a class="text-accent dark:text-accent text-[13px] font-bold border-b-2 border-accent pb-1" href="/rentalerp/service">Dịch vụ</a>
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/contact">Liên hệ</a>
 </nav>
-<div class="flex items-center gap-4">
-<button class="p-2 text-neutral-gray hover:bg-gray-100 rounded-full relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-</button>
-<div class="h-8 w-px bg-gray-100 mx-2"></div>
-<div class="flex items-center gap-3">
-<div class="text-right hidden sm:block">
-<p class="text-xs font-bold text-primary">Nguyễn Minh</p>
-<p class="text-[10px] text-neutral-gray">Phòng 402 - Building A</p>
 </div>
-<div class="w-10 h-10 rounded-full bg-light-teal border border-accent/20 flex items-center justify-center text-primary font-bold">
-                    NM
-                </div>
+<div class="flex items-center gap-4">
+<div class="hidden xl:flex items-center gap-2 bg-promo-red text-white px-3 py-2 rounded-lg shadow-md hover:bg-red-700 transition-colors cursor-pointer animate-pulse-slow">
+<span class="material-symbols-outlined text-sm">campaign</span>
+<span class="text-[11px] font-bold uppercase tracking-wider">Ưu đãi 20% Membership</span>
+</div>
+<div class="hidden xl:flex items-center gap-2 bg-teal-50 dark:bg-teal-900/30 px-4 py-2 rounded-full border border-teal-100 dark:border-teal-800">
+<span class="material-symbols-outlined text-primary dark:text-accent text-sm">diamond</span>
+<span class="text-primary dark:text-accent text-[11px] font-bold uppercase tracking-wider">Thành viên Gold</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full bg-gray-100 dark:bg-teal-900/50 flex items-center justify-center text-neutral-dark dark:text-white hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full overflow-hidden border-2 border-white dark:border-teal-900 shadow-sm">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_cSn0F04hhJ2PE0mCTCNis5OzhKRG8lGiOIS8T6_nwC7UJA8SxJDZay0xcwS0r6wMXNO1riXaNYYwwle4tf89HQcTCOLRV0t-orz9osJ5McG8ocf29MFkOf1tL8S_Ww2n9lBBjBoy_jaOReOY6SMgvrhjljdgVrQDeTYT_d-y7tSG_jV3JchMOazIPFNfHbISm3pQ3NmbTncHGjndPOni-c3rRE87mC7FsDTZrHM9A-eE-tmfeUPHv4Ujengpce7Clz9IH0v1zg4"/>
+</button>
 </div>
 </div>
 </div>
 </header>
-<div class="flex flex-1 overflow-hidden main-layout">
-<main class="flex-1 overflow-y-auto bg-gray-50/30">
-<div class="p-8 max-w-[1200px] mx-auto">
-<div class="flex justify-between items-end mb-10">
+<div class="flex flex-1 overflow-hidden relative">
+<aside class="filter-panel w-80 shrink-0 bg-white dark:bg-background-dark border-r border-gray-100 dark:border-teal-900/30 overflow-y-auto hidden md:block z-30">
+<div class="p-8 space-y-8 pb-24">
 <div>
-<h1 class="text-3xl font-bold text-primary tracking-tight">Dịch vụ tiện ích</h1>
-<p class="text-neutral-gray text-sm mt-2">Nâng tầm trải nghiệm sống với các dịch vụ chuyên nghiệp từ đối tác của RentalERP.</p>
+<h2 class="text-[11px] font-bold text-neutral-gray dark:text-teal-500/70 uppercase tracking-widest mb-6">Bộ lọc dịch vụ</h2>
+<div class="space-y-7">
+<div class="space-y-2.5">
+<label class="text-sm font-bold text-primary dark:text-teal-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">location_on</span> Khu vực áp dụng
+                            </label>
+<select class="w-full bg-gray-50/50 dark:bg-teal-950/20 border-gray-200 dark:border-teal-900/50 rounded-xl text-sm py-2.5 focus:ring-accent focus:border-accent">
+<option>Tất cả khu vực</option>
+<option>Quận 1, TP.HCM</option>
+<option>Quận 7, TP.HCM</option>
+<option>Bình Thạnh</option>
+<option>Thảo Điền</option>
+</select>
 </div>
-<div class="flex gap-2 bg-white p-1 rounded-lg border border-gray-100 shadow-sm">
-<button class="px-4 py-1.5 text-xs font-bold bg-primary text-white rounded-md">Tất cả</button>
-<button class="px-4 py-1.5 text-xs font-medium text-neutral-gray hover:bg-gray-50 rounded-md">Phổ biến</button>
-<button class="px-4 py-1.5 text-xs font-medium text-neutral-gray hover:bg-gray-50 rounded-md">Đã đặt</button>
+<div class="space-y-3">
+<label class="text-sm font-bold text-primary dark:text-teal-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">category</span> Danh mục
+                            </label>
+<div class="grid grid-cols-1 gap-2.5">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Vệ sinh &amp; Dọn dẹp</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Sửa chữa &amp; Bảo trì</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Giặt ủi &amp; May mặc</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Tiện ích ăn uống</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Spa &amp; Sức khỏe</span>
+</label>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
-<div class="relative h-48 w-full">
-<img alt="Food Delivery" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CGeyUmDfV_YV0fII8DhWj0OKaIoMMa2kqBubYmUmTom_lXFnluYMYaJ-_LtdRM6hqoHoV47hXHy2_ZXzMmNz0t1gMSSmxWS59y2z7hp0ZbJwuBvBu0IK_1FfuyXObGRn5sqEDWZaEQbOBKyw-76FdM4tLfpzyXCr2BGJeQTTJGHxZilqfztlXWtyK4Vxd24WhRUIgr_MCLYcY_o2hEnsSfNa_gI2FaOo0xcvlItu5NfN5BsVErMuqUi6rKQRps6qUlaaM7EdxUo"/>
-<div class="absolute top-4 left-4">
-<span class="px-3 py-1 bg-accent text-white text-[10px] font-bold uppercase tracking-wider rounded-full shadow-lg">Miễn phí giao hàng</span>
+<div class="space-y-3">
+<label class="text-sm font-bold text-primary dark:text-teal-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">schedule</span> Thời gian đáp ứng
+                            </label>
+<div class="grid grid-cols-1 gap-2.5">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" name="time" type="radio"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Ngay lập tức (1h)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" name="time" type="radio"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Đặt lịch trước</span>
+</label>
 </div>
 </div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-bold text-primary mb-2">Giao nhận thực phẩm</h3>
-<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Đi chợ hộ và giao thực phẩm tươi sống tận cửa phòng. Tiết kiệm thời gian mỗi ngày.</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-accent font-bold">Miễn phí</span>
-<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+</div>
+</div>
+<div class="bg-gradient-to-br from-primary to-teal-900 rounded-xl p-5 text-white shadow-lg relative overflow-hidden group cursor-pointer">
+<div class="absolute -right-4 -top-4 bg-white/10 w-24 h-24 rounded-full blur-xl group-hover:bg-white/20 transition-all"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined">workspace_premium</span>
+<h4 class="font-bold text-sm">Gói Membership</h4>
+</div>
+<p class="text-[11px] opacity-90 leading-relaxed mb-3">
+                            Đăng ký hội viên để được giảm 20% tất cả các dịch vụ tiện ích.
+                        </p>
+<button class="w-full py-2 bg-white text-primary text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-sm hover:bg-gray-50 transition-colors">
+                            Tìm hiểu thêm
+                        </button>
+</div>
+</div>
+</div>
+</aside>
+<main class="content-stream flex-1 overflow-y-auto bg-gray-50 dark:bg-background-dark/50 relative">
+<div class="p-8 max-w-[1600px] mx-auto">
+<div class="mb-10">
+<h1 class="text-3xl md:text-4xl font-extrabold text-primary dark:text-white tracking-tight mb-2">Dịch vụ tiện ích &amp; Trải nghiệm</h1>
+<p class="text-neutral-gray dark:text-teal-400/60 text-base font-normal max-w-2xl">
+                        Nâng tầm chất lượng cuộc sống với hệ thống dịch vụ tiêu chuẩn 5 sao. Đặt lịch dễ dàng, thanh toán tiện lợi ngay trên ứng dụng.
+                    </p>
+</div>
+<div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between sticky top-0 z-20 py-2 bg-gray-50/95 backdrop-blur-sm dark:bg-[#0A1F1D]/95">
+<div class="relative w-full max-w-xl">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-neutral-gray text-xl">search</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-3.5 border border-gray-200 dark:border-teal-900/50 rounded-2xl leading-5 bg-white dark:bg-teal-950/40 text-neutral-dark dark:text-gray-200 placeholder-neutral-gray focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 shadow-sm" placeholder="Tìm kiếm dịch vụ (ví dụ: dọn dẹp, sửa chữa, giặt ủi)..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-3 bg-white dark:bg-teal-950/40 px-5 py-3.5 rounded-2xl border border-gray-100 dark:border-teal-900/30 shadow-sm shrink-0">
+<span class="text-xs font-bold text-neutral-gray uppercase tracking-wider">Sắp xếp:</span>
+<select class="border-0 bg-transparent font-bold text-sm focus:ring-0 cursor-pointer text-primary dark:text-accent p-0 pr-8">
+<option>Phổ biến nhất</option>
+<option>Giá thấp nhất</option>
+<option>Đánh giá cao</option>
+</select>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-20">
+<article class="group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500" onclick="document.getElementById('service-modal').classList.remove('hidden')">
+<img alt="Cleaning Service" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBniWPKi7orTC6d33yKCiJ0O297vwimHlLQlvNf2Sp6r7MhsEtO_EkFadJc4vrmXMrGZz6fJdKXEusFHy3sSzl9xRFFxriNJObN6EfkiusT1dPG8uB0UPskqDOQoaavJaW8OZHesMCDi_Aa1_QJh2JLhgKu84UWBWmao1DsK8x_6m0SGL6Fs_ElEPSa0ZLu2dEBWuus84VJw-flNQ-w4W1zgxcCcgWJFaqL3warXFLBxpyuLD0MjpFk_aFhozL_FVAGifRahMPPuXc"/>
+<div class="absolute inset-0 immersive-card-overlay transition-opacity duration-300"></div>
+<div class="absolute top-5 left-5 z-10 flex gap-2">
+<span class="bg-accent/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Phổ biến</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-white text-3xl font-bold mb-2 leading-tight">Dọn dẹp Căn hộ Cao cấp</h3>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star_half</span>
+</div>
+<span class="text-gray-300 text-xs">(128 đánh giá)</span>
+</div>
+<p class="text-gray-200 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4 h-0 group-hover:h-auto">
+                                Dịch vụ dọn dẹp tiêu chuẩn khách sạn 5 sao. Bao gồm hút bụi, lau sàn, vệ sinh kính và sắp xếp đồ đạc ngăn nắp.
+                            </p>
+<div class="flex items-center justify-between border-t border-white/20 pt-4">
+<div>
+<span class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold">Giá tham khảo</span>
+<span class="text-accent text-lg font-bold">150.000 <span class="text-xs font-normal text-gray-300">VNĐ/giờ</span></span>
+</div>
+<button class="bg-white text-primary hover:bg-accent hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-2">
+                                    Đặt lịch <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
 </div>
 </div>
 </article>
-<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
-<div class="relative h-48 w-full">
-<img alt="Cleaning Service" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpg9qU5sGAs42ztmWmYL2rIfXFjbKBw1Vq3wSUK40kgEz69Vt7BJ6noRcGkE_mUCLxo5GcL-B9bp9ks_Hw6qZIYK32ANNyfHJZLVdJWhqWlm28aqRVMDIGljW66jWKxXzz8SG-bhM_OYzPGboQcEzQotyidRkzzLRxTeGg-sCEIrlh_8Edj_fDSoHCOZ_xYQyyE6Pa8IlgtviWq4JsOy4CBAj032_v0lM3SW5HmLbPAwsAuMp1f17PtgKWuP__sVlaqgDKvgkLons"/>
+<article class="group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500" onclick="document.getElementById('service-modal').classList.remove('hidden')">
+<img alt="Maintenance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Ved41riSmi3WUHR0xlquwTtr0QggbYhNsRBQfZ9R90fJ8_PdMm9ZwtCMIg9592Q1xLvVKE7p2Hfp6DcN2kZWU2ADsmVgB6WuIhToJq0cVrrTqV6soAhFdB8s_c9Z5X2mvnQ6uta6ntIGYspg-YzM9D4_n7IR8Zu_Qa0gWYz31M36mUDP_x-yeROtD06Gq7YxG6hwUBvGS5Ogvc5PJxGLbrTc9bisa3KrqJww1-N3Ir_JJG9EByvITCdXsJXN4HVXu0rX7Q-fbLs"/>
+<div class="absolute inset-0 immersive-card-overlay transition-opacity duration-300"></div>
+<div class="absolute top-5 left-5 z-10 flex gap-2">
+<span class="bg-primary/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Kỹ thuật</span>
 </div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-bold text-primary mb-2">Dọn dẹp vệ sinh</h3>
-<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Dịch vụ dọn dẹp định kỳ hoặc theo giờ bởi đội ngũ chuyên nghiệp, tận tâm.</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-primary font-bold">Từ 150.000đ</span>
-<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+<div class="absolute bottom-0 left-0 w-full p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-white text-3xl font-bold mb-2 leading-tight">Bảo trì &amp; Sửa chữa 24/7</h3>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
 </div>
+<span class="text-gray-300 text-xs">(85 đánh giá)</span>
 </div>
-</article>
-<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
-<div class="relative h-48 w-full">
-<img alt="Maintenance" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf_gUv2SNm11Q3qxgSa7024waObwkKPoKxVI7BMsl1GpJD1cdatl-Xu-ZLUu9NjvKR1CulLliLo7Nxd_Q1AE33VKn_8w5K4dxyQ5RmWiFlV_5meAno3VrMGgCzoSMANwolvN4gFOdDhF3JDwiLJdmF0w1ffCmQ5vs4SNmxOjfyZ5ooR8DYBXucUmL8hpk6NVe5ITLm5KwiKfHxTC4HcGR0S9xCtwP9xKod499hwoUcwigYeQDgiy1lIqr58_-njhr9yHlQyVoFbQc"/>
-<div class="absolute top-4 right-4">
-<span class="px-3 py-1 bg-primary/90 text-white text-[10px] font-bold uppercase rounded-full backdrop-blur-sm">Hỗ trợ 24/7</span>
+<p class="text-gray-200 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4 h-0 group-hover:h-auto">
+                                Đội ngũ kỹ thuật viên chuyên nghiệp sẵn sàng xử lý các sự cố điện, nước, máy lạnh mọi lúc mọi nơi.
+                            </p>
+<div class="flex items-center justify-between border-t border-white/20 pt-4">
+<div>
+<span class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold">Phí kiểm tra</span>
+<span class="text-accent text-lg font-bold">Miễn phí</span>
 </div>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-bold text-primary mb-2">Bảo trì sửa chữa</h3>
-<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Xử lý nhanh các vấn đề điện nước, thiết bị gia dụng chỉ trong 30 phút.</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-primary font-bold italic text-sm">Báo giá sau khảo sát</span>
-<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
-</div>
-</div>
-</article>
-<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
-<div class="relative h-48 w-full">
-<img alt="Laundry Service" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDquQAN2jFJnIGWi0TOG-7o27qshj7ATknfKz_mJZEJap2VL5BrpxRgK-ROM7eZZYm-DVvXYvSMlwcb0ADcUaZun0_OiPPgGzIE7Ob77vP9TpCWsr8DGCHglT09dmc4e43QaqxQ7RNdGE41MMJSL-l96-VpJfSEnwKC950UROVbpSI3aZIu4PiuTlePEOJi6RYDvgbHeM5Of3Y7zXtMucWQqK3CWQ5IGl1brejBIGvg05Eio6aEnfI1Ngklzllq6QIUhjAeaco3MTQ"/>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-bold text-primary mb-2">Giặt ủi cao cấp</h3>
-<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Giặt sấy, giặt hấp bảo vệ chất liệu vải chuyên sâu. Giao nhận trong 24h.</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-primary font-bold">30.000đ/kg</span>
-<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+<button class="bg-white text-primary hover:bg-accent hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-2">
+                                    Gọi ngay <span class="material-symbols-outlined text-sm">call</span>
+</button>
 </div>
 </div>
 </article>
-<article class="service-card flex flex-col bg-white rounded-[14px] overflow-hidden shadow-sm border border-gray-100">
-<div class="relative h-48 w-full">
-<img alt="Pet Care" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW4bD5z2qT1VoropcU46V4ww5Fojt2Ym_mLaGW2TEWnBOfPxyfIKlGCiIyFWil0WDma_0i5b4J6Q6iDr-v4u0l-4L6xPs0P1HHy74SN0syMDE1plo9jxzNSI0BV-vKPU0TwiNlS9Lc-RxRpbEYA69P5xgwcNRpD8VZajeDDZYtZSFt8JmBpvPusFqjlAzkBV6bcmech5SVeKyjLuSYKnyhuIed3gYqpzJefUrVveNPBd0KuMVo3NxOlRBwahao8gifHJjj1nvBt5k"/>
+<article class="group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500" onclick="document.getElementById('service-modal').classList.remove('hidden')">
+<img alt="Laundry" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPZloJozY51eugolJkk-sB5kH_q63cOBRnkPtM3_VUq0vUA8k1u4S3eK1H3QKafzb05oTzbjvfirtSEyW62k_ZIkVDTn0Iu23Umoud9okJd0fwAk2zP3IU97nbLNHm9GrdSvsSitRdo_G7Op613-eWZfRzlzfZWfsLI-pxwvl_0_onAxMJ_i9edyjiuyXT1hYvgk5RRg0K7XZ91d45Ns1mvYp7beHq8J_Er6-99Fyt6Z2Vc6K0B1-M5vPql4BUMkkywCjPWYhQrR0"/>
+<div class="absolute inset-0 immersive-card-overlay transition-opacity duration-300"></div>
+<div class="absolute top-5 left-5 z-10 flex gap-2">
+<span class="bg-teal-700/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Tiện ích</span>
 </div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-bold text-primary mb-2">Trông giữ thú cưng</h3>
-<p class="text-sm text-neutral-gray leading-relaxed mb-6 line-clamp-2">Chăm sóc, dắt đi dạo và cho thú cưng ăn khi bạn vắng nhà hoặc bận rộn.</p>
-<div class="mt-auto flex items-center justify-between">
-<span class="text-primary font-bold">Từ 100.000đ</span>
-<button class="px-6 py-2.5 bg-primary hover:bg-[#08453f] text-white text-sm font-bold rounded-xl transition-all">Yêu cầu</button>
+<div class="absolute bottom-0 left-0 w-full p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-white text-3xl font-bold mb-2 leading-tight">Giặt ủi &amp; Chăm sóc quần áo</h3>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+</div>
+<span class="text-gray-300 text-xs">(240 đánh giá)</span>
+</div>
+<p class="text-gray-200 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4 h-0 group-hover:h-auto">
+                                Giao nhận tận nơi. Giặt sấy, giặt hấp cao cấp cho vest, váy dạ hội và chăn ga gối đệm.
+                            </p>
+<div class="flex items-center justify-between border-t border-white/20 pt-4">
+<div>
+<span class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold">Giá từ</span>
+<span class="text-accent text-lg font-bold">20.000 <span class="text-xs font-normal text-gray-300">VNĐ/kg</span></span>
+</div>
+<button class="bg-white text-primary hover:bg-accent hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-2">
+                                    Đặt đơn <span class="material-symbols-outlined text-sm">local_laundry_service</span>
+</button>
 </div>
 </div>
 </article>
-<article class="border-2 border-dashed border-gray-200 rounded-[14px] flex flex-col items-center justify-center p-8 text-center bg-gray-50/50 hover:border-accent transition-colors group cursor-default">
-<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-gray-400 group-hover:text-accent">add_circle</span>
+<article class="group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500" onclick="document.getElementById('service-modal').classList.remove('hidden')">
+<img alt="Spa" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJlOrsLt40cLUdecS0rq2fSJxbWgb7CdEpkFBhPzJGCnRrllLMQTxwA9aHcu7VBy_-V7rOaaykMR25TIbMHLzeqdQ39nAX2rTOuTjo6siOQ9O7wMWkpa1KJkc56c3d8-YsEzyj9Lxa1JyEicmnZJZgiq_ljA6iavT5o7ciz0CsIKDhYqLuLzsDfyecjjs1uiifRikc7HP-6W9VSvYL_Niz8qGPqTeaOCjv995hKI0-bxUFmvNRSdDnhIR_Fu9jlC-FSjhAk8R3pCs"/>
+<div class="absolute inset-0 immersive-card-overlay transition-opacity duration-300"></div>
+<div class="absolute top-5 left-5 z-10 flex gap-2">
+<span class="bg-pink-600/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Sức khỏe &amp; Làm đẹp</span>
 </div>
-<p class="text-sm font-bold text-gray-400 group-hover:text-primary">Dịch vụ mới sắp ra mắt</p>
-<p class="text-[11px] text-gray-400 mt-1 uppercase tracking-wider">Stay Tuned</p>
+<div class="absolute bottom-0 left-0 w-full p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-white text-3xl font-bold mb-2 leading-tight">Spa &amp; Thư giãn Tại gia</h3>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+</div>
+<span class="text-gray-300 text-xs">(56 đánh giá)</span>
+</div>
+<p class="text-gray-200 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4 h-0 group-hover:h-auto">
+                                Tận hưởng liệu trình massage, chăm sóc da mặt chuyên sâu ngay tại căn hộ của bạn. Kỹ thuật viên uy tín.
+                            </p>
+<div class="flex items-center justify-between border-t border-white/20 pt-4">
+<div>
+<span class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold">Combo từ</span>
+<span class="text-accent text-lg font-bold">450.000 <span class="text-xs font-normal text-gray-300">VNĐ</span></span>
+</div>
+<button class="bg-white text-primary hover:bg-accent hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-2">
+                                    Chọn gói <span class="material-symbols-outlined text-sm">spa</span>
+</button>
+</div>
+</div>
 </article>
+<article class="group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500" onclick="document.getElementById('service-modal').classList.remove('hidden')">
+<img alt="Party" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LdyHEDxvVa6L6-iInrtHroEYjoyMOqoFKyUMzqPY86R_ZC0l1a3Qb3JWylr6jidRzGQvmXnHMnkN2fQRQlGZF3MDEIQ2LV4jMkXN11TAdqDv_oxekurW1mpodM00EUGVvMVi1o362jXlrHIZlCIGbnY2UrBwULFCV_rfeVSD0LaeTyD3JhPjd1mIzG1QBM05JFCEqO6Mp-HGwmaSd3YMUb2aQ6JIIdnGl_s6_s6bI4uGizU7TN30pDG-BniJ2X2wPx6OkYvkzv4"/>
+<div class="absolute inset-0 immersive-card-overlay transition-opacity duration-300"></div>
+<div class="absolute top-5 left-5 z-10 flex gap-2">
+<span class="bg-indigo-600/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Sự kiện</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-white text-3xl font-bold mb-2 leading-tight">Setup Tiệc &amp; Catering</h3>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] text-gray-500">star</span>
+</div>
+<span class="text-gray-300 text-xs">(32 đánh giá)</span>
+</div>
+<p class="text-gray-200 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4 h-0 group-hover:h-auto">
+                                Dịch vụ tổ chức tiệc sinh nhật, kỷ niệm, BBQ tại nhà hoặc khu vực BBQ chung. Menu đa dạng Á-Âu.
+                            </p>
+<div class="flex items-center justify-between border-t border-white/20 pt-4">
+<div>
+<span class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold">Liên hệ báo giá</span>
+<span class="text-accent text-lg font-bold">Tùy chọn</span>
+</div>
+<button class="bg-white text-primary hover:bg-accent hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-2">
+                                    Tư vấn <span class="material-symbols-outlined text-sm">celebration</span>
+</button>
+</div>
+</div>
+</article>
+<article class="group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500" onclick="document.getElementById('service-modal').classList.remove('hidden')">
+<img alt="Interior" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDND0n0Bj-5_8kSvZGlkYg7B33ByIx3ATFzLyrvhPO25nfAXrrLvmQWEH-rH_meapDGCd2Qyt4OLzDGkxG2JJ1lNmSbFZSyIpdHEO8xENRfYgRkLAP6Yic8K-bC6P8Zjqzgwi-8A76h_7l5I7kn-0cluw-gpN7361yjCd75iyi4ttU5nBF-T7Bl1zaT99Jwnomyrg1dIKZ0GVWCQkoKTndhzEnsKWQqPjXEZAng_lX_Ni_isD3fE0QVeuZS3c9gFuod6Updgp7FKn0"/>
+<div class="absolute inset-0 immersive-card-overlay transition-opacity duration-300"></div>
+<div class="absolute top-5 left-5 z-10 flex gap-2">
+<span class="bg-gray-800/90 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Nâng cấp</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="text-white text-3xl font-bold mb-2 leading-tight">Tư vấn Thiết kế Nội thất</h3>
+<div class="flex items-center gap-2 mb-4">
+<div class="flex text-yellow-400 text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+</div>
+<span class="text-gray-300 text-xs">(15 đánh giá)</span>
+</div>
+<p class="text-gray-200 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 mb-4 h-0 group-hover:h-auto">
+                                Biến căn hộ của bạn thành không gian sống mơ ước với gói tư vấn và thi công nội thất trọn gói.
+                            </p>
+<div class="flex items-center justify-between border-t border-white/20 pt-4">
+<div>
+<span class="block text-gray-400 text-[10px] uppercase tracking-wider font-bold">Gói thiết kế từ</span>
+<span class="text-accent text-lg font-bold">5.000.000 <span class="text-xs font-normal text-gray-300">VNĐ</span></span>
+</div>
+<button class="bg-white text-primary hover:bg-accent hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-2">
+                                    Xem mẫu <span class="material-symbols-outlined text-sm">palette</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<div class="flex flex-col items-center gap-4 text-center pb-8">
+<p class="text-neutral-gray text-sm">Bạn không tìm thấy dịch vụ mình cần?</p>
+<button class="text-primary font-bold hover:text-accent underline underline-offset-4 decoration-2">Gửi yêu cầu dịch vụ mới</button>
 </div>
 </div>
 </main>
-<aside class="w-80 shrink-0 bg-white border-l border-gray-100 overflow-y-auto hidden lg:block">
-<div class="p-6 space-y-8">
-<section>
-<h2 class="text-[11px] font-bold text-neutral-gray uppercase tracking-[0.2em] mb-6">Trợ lý RentalERP AI</h2>
-<div class="bg-light-teal border border-accent/20 rounded-2xl p-5 shadow-sm">
-<div class="flex items-center gap-3 mb-4">
-<div class="bg-primary text-white p-2 rounded-xl">
-<span class="material-symbols-outlined text-xl">smart_toy</span>
+<button class="fixed bottom-8 right-8 z-50 bg-promo-red text-white p-2 pl-2 pr-6 rounded-full shadow-2xl hover:bg-red-700 transition-all flex items-center gap-3 animate-bounce-slow group hover:scale-105">
+<div class="bg-white text-promo-red rounded-full w-10 h-10 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-2xl">support_agent</span>
 </div>
+<div class="flex flex-col items-start">
+<span class="text-[10px] uppercase font-bold opacity-80 tracking-wider">Hotline 24/7</span>
+<span class="font-extrabold text-base tracking-widest">1900 6868</span>
+</div>
+</button>
+</div>
+<div aria-labelledby="modal-title" aria-modal="true" class="hidden relative z-[100]" id="service-modal" role="dialog">
+<div class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm transition-opacity" onclick="document.getElementById('service-modal').classList.add('hidden')"></div>
+<div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+<div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+<div class="relative transform overflow-hidden rounded-card bg-white dark:bg-neutral-dark text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg border border-gray-100 dark:border-teal-900">
+<button class="absolute top-4 right-4 z-20 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full backdrop-blur-md transition-colors" onclick="document.getElementById('service-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+<div class="relative h-56 w-full group">
+<img alt="Service Detail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBniWPKi7orTC6d33yKCiJ0O297vwimHlLQlvNf2Sp6r7MhsEtO_EkFadJc4vrmXMrGZz6fJdKXEusFHy3sSzl9xRFFxriNJObN6EfkiusT1dPG8uB0UPskqDOQoaavJaW8OZHesMCDi_Aa1_QJh2JLhgKu84UWBWmao1DsK8x_6m0SGL6Fs_ElEPSa0ZLu2dEBWuus84VJw-flNQ-w4W1zgxcCcgWJFaqL3warXFLBxpyuLD0MjpFk_aFhozL_FVAGifRahMPPuXc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A1F1D] via-[#0A1F1D]/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-accent text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Phổ biến</span>
+<div class="flex text-yellow-400 text-xs">
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+<span class="material-symbols-outlined text-[14px] fill-current">star</span>
+</div>
+</div>
+<h3 class="text-2xl font-bold text-white leading-tight">Dọn dẹp Căn hộ Cao cấp</h3>
+</div>
+</div>
+<div class="p-6 space-y-6">
 <div>
-<h4 class="font-bold text-sm text-primary">Chat thông minh</h4>
-<p class="text-[10px] text-accent font-medium uppercase tracking-wider">Online 24/7</p>
+<h4 class="text-xs font-bold text-neutral-gray dark:text-gray-400 uppercase tracking-widest mb-3">Thông tin dịch vụ</h4>
+<p class="text-sm text-neutral-dark dark:text-gray-300 leading-relaxed">
+                                Dịch vụ dọn dẹp tiêu chuẩn 5 sao bao gồm: hút bụi thảm, lau sàn gỗ chuyên dụng, vệ sinh kính mặt ngoài, khử khuẩn bề mặt và sắp xếp nội thất. Đội ngũ nhân viên được đào tạo bài bản, sử dụng hóa chất hữu cơ an toàn.
+                            </p>
 </div>
-</div>
-<p class="text-xs text-primary/70 leading-relaxed mb-4">"Chào Minh, mình có thể giúp bạn đặt lịch dọn dẹp hay báo hỏng thiết bị không?"</p>
-<button class="w-full py-2.5 bg-primary hover:bg-[#08453f] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition-all">
-<span class="material-symbols-outlined text-sm">chat</span>
-                        Bắt đầu hỗ trợ
-                    </button>
-</div>
-</section>
-<section>
-<div class="flex items-center justify-between mb-4">
-<h2 class="text-[11px] font-bold text-neutral-gray uppercase tracking-[0.2em]">Ghi chú yêu cầu</h2>
-<span class="material-symbols-outlined text-neutral-gray text-sm cursor-help">info</span>
-</div>
-<div class="space-y-4">
-<textarea class="w-full bg-gray-50 border-gray-200 rounded-xl text-xs py-3 px-4 focus:ring-accent focus:border-accent min-h-[140px] placeholder-neutral-gray/40 resize-none shadow-inner" placeholder="Mô tả chi tiết yêu cầu của bạn (Ví dụ: Thời gian dọn dẹp, mã giảm giá, lưu ý đặc biệt...)"></textarea>
-<div class="pt-2 border-t border-gray-50">
-<p class="text-xs font-bold text-primary mb-3">Liên hệ trực tiếp</p>
-<a class="flex items-center gap-4 p-3 border border-gray-100 rounded-xl hover:border-accent hover:bg-light-teal transition-all group" href="tel:19001234">
-<div class="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-xl">phone_in_talk</span>
-</div>
+<div class="flex items-center justify-between p-4 bg-background-light dark:bg-teal-950/30 rounded-card border border-gray-100 dark:border-teal-900/50">
 <div>
-<p class="text-[10px] text-neutral-gray">Hotline vận hành</p>
-<p class="text-sm font-bold text-primary tracking-tight">1900 1234</p>
+<span class="block text-xs text-neutral-gray dark:text-gray-400 mb-1">Đơn giá tham khảo</span>
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-bold text-primary dark:text-accent">150.000đ</span>
+<span class="text-xs text-neutral-gray">/giờ</span>
 </div>
-</a>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-teal-900 border border-gray-200 dark:border-teal-800 rounded-lg shadow-sm hover:bg-gray-50 dark:hover:bg-teal-800 transition-colors">
+<span class="material-symbols-outlined text-promo-red text-xl">headset_mic</span>
+<span class="text-sm font-bold text-neutral-dark dark:text-white">1900 6868</span>
+</button>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-bold text-neutral-dark dark:text-white" for="booking-select">Chọn lịch đặt hiện có</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-neutral-gray text-lg">calendar_month</span>
+</div>
+<select class="block w-full pl-10 pr-10 py-3 text-sm border-gray-200 dark:border-teal-800 rounded-card bg-gray-50 dark:bg-teal-950/50 text-neutral-dark dark:text-gray-200 focus:ring-primary focus:border-primary" id="booking-select">
+<option>Booking #8291 - Landmark 81 (Check-in 14:00)</option>
+<option>Booking #9923 - Masteri Thảo Điền</option>
+<option value="new">+ Tạo đặt phòng mới</option>
+</select>
 </div>
 </div>
-</section>
+<button class="w-full bg-primary hover:bg-teal-800 text-white font-bold py-4 rounded-card shadow-lg shadow-primary/20 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+<span>Xác nhận đặt dịch vụ</span>
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
 </div>
-</aside>
+</div>
+</div>
+</div>
 </div>
 
 </body></html>
