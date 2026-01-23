@@ -1,0 +1,377 @@
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh sách căn hộ | RENTALERPAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0D5C54", // Deep Teal
+                        "accent": "#11B5A4",  // Accent Teal
+                        "background-light": "#F8FAFA",
+                        "background-dark": "#0A1F1D",
+                        "neutral-dark": "#1A2E2C",
+                        "neutral-gray": "#64748B",
+                        "promo-red": "#E11D48",
+                        "promo-pink": "#FFF1F2",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "card": "14px",
+                        "sidebar": "14px",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Inter', sans-serif;
+                @apply bg-background-light text-neutral-dark;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0D5C54;
+            border-radius: 10px;
+        }
+        .filter-panel {
+            height: calc(100vh - 80px);
+        }
+        .content-stream {
+            height: calc(100vh - 80px);
+        }
+        .glass-ai-widget {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(17, 181, 164, 0.2);
+        }
+        .dark .glass-ai-widget {
+            background: rgba(13, 92, 84, 0.2);
+            border: 1px solid rgba(17, 181, 164, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen overflow-hidden flex flex-col">
+<header class="h-20 shrink-0 z-50 bg-white dark:bg-background-dark border-b border-gray-100 dark:border-teal-900/30">
+<div class="h-full px-8 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-2.5">
+<div class="bg-primary p-2 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-white text-2xl block">apartment</span>
+</div>
+<span class="text-primary dark:text-white text-xl font-extrabold tracking-tighter">RENTALERPAI</span>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/home">Trang chủ</a>
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/bds">Dự án</a>
+<a class="text-accent dark:text-accent text-[13px] font-bold border-b-2 border-accent pb-1" href="/rentalerp/booking">Đặt phòng</a>
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/service">Dịch vụ</a>
+<a class="text-neutral-gray dark:text-gray-400 text-[13px] font-semibold hover:text-accent transition-colors" href="/rentalerp/contact">Liên hệ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden xl:flex items-center gap-2 bg-promo-pink px-4 py-2 rounded-full border border-promo-red/10">
+<span class="material-symbols-outlined text-promo-red text-sm">campaign</span>
+<span class="text-promo-red text-[11px] font-bold uppercase tracking-wider">Ưu đãi hè rực rỡ</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-6 py-2.5 text-[12px] font-bold text-primary dark:text-white border border-gray-200 dark:border-teal-900/50 rounded-lg hover:bg-gray-50 transition-colors">
+                    ĐĂNG NHẬP
+                </button>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="filter-panel w-80 shrink-0 bg-white dark:bg-background-dark border-r border-gray-100 dark:border-teal-900/30 overflow-y-auto hidden md:block">
+<div class="p-8 space-y-8 pb-24">
+<div>
+<h2 class="text-[11px] font-bold text-neutral-gray dark:text-teal-500/70 uppercase tracking-widest mb-6">Bộ lọc tìm kiếm</h2>
+<div class="space-y-7">
+<div class="space-y-2.5">
+<label class="text-sm font-bold text-primary dark:text-teal-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">location_on</span> Khu vực
+                        </label>
+<select class="w-full bg-gray-50/50 dark:bg-teal-950/20 border-gray-200 dark:border-teal-900/50 rounded-xl text-sm py-2.5 focus:ring-accent focus:border-accent">
+<option>Tất cả khu vực</option>
+<option>Quận 1, TP.HCM</option>
+<option>Quận 7, TP.HCM</option>
+<option>Quận Bình Thạnh</option>
+<option>Thủ Đức City</option>
+</select>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-bold text-primary dark:text-teal-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">apartment</span> Loại phòng
+                        </label>
+<div class="grid grid-cols-1 gap-2.5">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Căn hộ Studio</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Chung cư 1PN</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Chung cư 2PN+</span>
+</label>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-bold text-primary dark:text-teal-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">payments</span> Mức giá
+                        </label>
+<div class="pt-2">
+<input class="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-accent" max="50" min="0" type="range"/>
+<div class="flex justify-between text-[11px] font-medium text-neutral-gray mt-2">
+<span>0 VNĐ</span>
+<span>50tr+ VNĐ</span>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-bold text-primary dark:text-teal-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-accent text-lg">settings_input_component</span> Tiện ích khác
+                        </label>
+<div class="grid grid-cols-1 gap-2.5">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Cho phép nuôi thú cưng</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent" type="checkbox"/>
+<span class="text-sm text-neutral-gray dark:text-gray-400 group-hover:text-primary transition-colors">Có bãi đậu xe ô tô</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-teal-900 transition-all flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-xl">sync</span> Cập nhật danh sách
+            </button>
+<div class="mt-8 pt-8 border-t border-gray-50 dark:border-teal-900/20">
+<div class="glass-ai-widget rounded-xl p-5 border shadow-sm">
+<div class="flex items-start gap-3 mb-4">
+<div class="bg-primary text-white p-2.5 rounded-xl shadow-md shrink-0">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-primary dark:text-teal-50">Trợ lý AI Rental</h4>
+<p class="text-[11px] text-neutral-gray dark:text-teal-200/60 mt-0.5 leading-relaxed">
+                                Bạn cần tìm phòng gấp? Hãy chat để AI tư vấn ngay lập tức.
+                            </p>
+</div>
+</div>
+<button class="w-full py-2.5 bg-accent hover:bg-accent/90 text-white text-xs font-bold rounded-xl shadow-md shadow-accent/10 transition-all flex items-center justify-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+                        Chat với AI ngay
+                    </button>
+</div>
+</div>
+</div>
+</aside>
+<main class="content-stream flex-1 overflow-y-auto bg-gray-50/50 dark:bg-background-dark/50">
+<div class="p-8">
+<div class="mb-8">
+<h1 class="text-2xl md:text-3xl font-extrabold text-primary dark:text-white tracking-tight">Danh sách căn hộ Available</h1>
+<p class="text-neutral-gray dark:text-teal-400/60 text-sm mt-1.5 font-normal">Tìm thấy <span class="font-bold text-accent">12</span> căn hộ phù hợp với tiêu chí của bạn</p>
+</div>
+<div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="relative w-full max-w-2xl">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-neutral-gray text-xl">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-teal-900/50 rounded-xl leading-5 bg-white dark:bg-teal-950/20 text-neutral-dark dark:text-gray-200 placeholder-neutral-gray focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all duration-200 shadow-sm" placeholder="Tìm kiếm theo địa điểm, tên dự án..." type="text"/>
+</div>
+<div class="flex items-center gap-3 bg-white dark:bg-teal-950/20 px-4 py-3 rounded-xl border border-gray-100 dark:border-teal-900/30 shadow-sm shrink-0">
+<span class="text-xs font-medium text-neutral-gray uppercase tracking-wider">Sắp xếp:</span>
+<select class="border-0 bg-transparent font-bold text-sm focus:ring-0 cursor-pointer text-primary dark:text-accent p-0 pr-8">
+<option>Mới nhất</option>
+<option>Giá thấp nhất</option>
+<option>Giá cao nhất</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-widest">Mới</div>
+<button class="absolute top-3 right-3 z-10 p-2 bg-black/10 backdrop-blur-md rounded-full hover:bg-accent/80 text-white transition-all">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<img alt="Studio apartment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBniWPKi7orTC6d33yKCiJ0O297vwimHlLQlvNf2Sp6r7MhsEtO_EkFadJc4vrmXMrGZz6fJdKXEusFHy3sSzl9xRFFxriNJObN6EfkiusT1dPG8uB0UPskqDOQoaavJaW8OZHesMCDi_Aa1_QJh2JLhgKu84UWBWmao1DsK8x_6m0SGL6Fs_ElEPSa0ZLu2dEBWuus84VJw-flNQ-w4W1zgxcCcgWJFaqL3warXFLBxpyuLD0MjpFk_aFhozL_FVAGifRahMPPuXc"/>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">king_bed</span> 1 PN
+                            </div>
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">square_foot</span> 35m²
+                            </div>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">5.000.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/tháng</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Studio Hiện Đại Full Nội Thất</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm shrink-0">location_on</span>
+<span class="line-clamp-1">Quận 1, TP.HCM</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-widest">Nổi bật</div>
+<button class="absolute top-3 right-3 z-10 p-2 bg-black/10 backdrop-blur-md rounded-full hover:bg-accent/80 text-white transition-all">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<img alt="Luxurious apartment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LdyHEDxvVa6L6-iInrtHroEYjoyMOqoFKyUMzqPY86R_ZC0l1a3Qb3JWylr6jidRzGQvmXnHMnkN2fQRQlGZF3MDEIQ2LV4jMkXN11TAdqDv_oxekurW1mpodM00EUGVvMVi1o362jXlrHIZlCIGbnY2UrBwULFCV_rfeVSD0LaeTyD3JhPjd1mIzG1QBM05JFCEqO6Mp-HGwmaSd3YMUb2aQ6JIIdnGl_s6_s6bI4uGizU7TN30pDG-BniJ2X2wPx6OkYvkzv4"/>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">king_bed</span> 2 PN
+                            </div>
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">square_foot</span> 85m²
+                            </div>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">12.000.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/tháng</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Căn Hộ Cao Cấp View Sông</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm shrink-0">location_on</span>
+<span class="line-clamp-1">Quận 7, TP.HCM</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<button class="absolute top-3 right-3 z-10 p-2 bg-black/10 backdrop-blur-md rounded-full hover:bg-accent/80 text-white transition-all">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<img alt="Modern bedroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPZloJozY51eugolJkk-sB5kH_q63cOBRnkPtM3_VUq0vUA8k1u4S3eK1H3QKafzb05oTzbjvfirtSEyW62k_ZIkVDTn0Iu23Umoud9okJd0fwAk2zP3IU97nbLNHm9GrdSvsSitRdo_G7Op613-eWZfRzlzfZWfsLI-pxwvl_0_onAxMJ_i9edyjiuyXT1hYvgk5RRg0K7XZ91d45Ns1mvYp7beHq8J_Er6-99Fyt6Z2Vc6K0B1-M5vPql4BUMkkywCjPWYhQrR0"/>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">king_bed</span> 1 PN
+                            </div>
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">square_foot</span> 42m²
+                            </div>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">7.500.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/tháng</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Chung Cư Mini Gần ĐH Hutech</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm shrink-0">location_on</span>
+<span class="line-clamp-1">Bình Thạnh, TP.HCM</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-promo-red text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-widest">Hot Deal</div>
+<button class="absolute top-3 right-3 z-10 p-2 bg-black/10 backdrop-blur-md rounded-full hover:bg-accent/80 text-white transition-all">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+<img alt="Cozy living space" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC52_NqcPesHYLm5lDcTcJlf1MadnpxMxa57QEuNtb9HxBK6-8_-il1o-SvMVpDgzUfx3tvgLsrdOYItdZQkCQydAupQJybixHPEvzFSiTlyBqFeXCYYlnTzeEy3YiNj3dMdbqiLsU1V8sJdXXrdxPHVO_IATH2rw4VsuJjS3q48iMmy5NEAwQOrUEOlb2eWHteW8K3OkT6-yP3ZT2Dl7riIUZTPZg-Uywo1A62TnPjmxc2xv_s_Sz00R_KHXlAaIXg0QPHBsPRhLE"/>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">king_bed</span> 3 PN
+                            </div>
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-2 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">square_foot</span> 110m²
+                            </div>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">850.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/ngày</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Penthouse Mini Quận 2</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm shrink-0">location_on</span>
+<span class="line-clamp-1">Thảo Điền, TP. Thủ Đức</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img alt="Modern minimalist room" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDND0n0Bj-5_8kSvZGlkYg7B33ByIx3ATFzLyrvhPO25nfAXrrLvmQWEH-rH_meapDGCd2Qyt4OLzDGkxG2JJ1lNmSbFZSyIpdHEO8xENRfYgRkLAP6Yic8K-bC6P8Zjqzgwi-8A76h_7l5I7kn-0cluw-gpN7361yjCd75iyi4ttU5nBF-T7Bl1zaT99Jwnomyrg1dIKZ0GVWCQkoKTndhzEnsKWQqPjXEZAng_lX_Ni_isD3fE0QVeuZS3c9gFuod6Updgp7FKn0"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">6.500.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/tháng</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Căn Hộ Dịch Vụ Bình Thạnh</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Bình Thạnh, TP.HCM</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-widest">Mới</div>
+<img alt="Modern apartment living room" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv8jLsJuhMv6rf7XW5CfIylWnbsH_p0DO83IuVkpNzE9LkKnK1-pLntwdhMFTdTwZ5zIS-HUnCWjWXyymh26OyBBxgm56Z1c9FB2XaD5ytSPHuL_RWo6NiJHv5TTQ2V9VE4pdoRrqoRDgXnQ-ep_ajiNYT8nDYEwLGtv6i6JemXborMPHm23Pahb5k5aEXVAKVq7c2OTTIkC102uNfSeSWiNxNXmEh5ffaXBvoE0m2xnjO3lF9pw4r0tBPqUJXyMBir4E1tZ6XRmA"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">9.000.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/tháng</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Chung Cư Cao Cấp Masteri</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Thảo Điền, TP. Thủ Đức</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img alt="Modern kitchen apartment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Ved41riSmi3WUHR0xlquwTtr0QggbYhNsRBQfZ9R90fJ8_PdMm9ZwtCMIg9592Q1xLvVKE7p2Hfp6DcN2kZWU2ADsmVgB6WuIhToJq0cVrrTqV6soAhFdB8s_c9Z5X2mvnQ6uta6ntIGYspg-YzM9D4_n7IR8Zu_Qa0gWYz31M36mUDP_x-yeROtD06Gq7YxG6hwUBvGS5Ogvc5PJxGLbrTc9bisa3KrqJww1-N3Ir_JJG9EByvITCdXsJXN4HVXu0rX7Q-fbLs"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">11.500.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/tháng</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Vinhomes Central Park</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Bình Thạnh, TP.HCM</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-teal-950/20 rounded-[14px] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_40px_-10px_rgba(13,92,84,0.15)] transition-all duration-300 border border-gray-100 dark:border-teal-900/30 overflow-hidden flex flex-col cursor-pointer">
+<div class="relative aspect-[16/10] overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-widest">Nổi bật</div>
+<img alt="Modern bright bedroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJlOrsLt40cLUdecS0rq2fSJxbWgb7CdEpkFBhPzJGCnRrllLMQTxwA9aHcu7VBy_-V7rOaaykMR25TIbMHLzeqdQ39nAX2rTOuTjo6siOQ9O7wMWkpa1KJkc56c3d8-YsEzyj9Lxa1JyEicmnZJZgiq_ljA6iavT5o7ciz0CsIKDhYqLuLzsDfyecjjs1uiifRikc7HP-6W9VSvYL_Niz8qGPqTeaOCjv995hKI0-bxUFmvNRSdDnhIR_Fu9jlC-FSjhAk8R3pCs"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="text-accent text-lg font-bold mb-1">15.000.000 <span class="text-[10px] font-medium text-neutral-gray">VNĐ/tháng</span></h3>
+<h4 class="text-[14px] font-bold text-neutral-dark dark:text-teal-50 line-clamp-1 mb-2">Sunrise City View</h4>
+<div class="flex items-center gap-2 text-neutral-gray dark:text-teal-400/60 text-xs font-normal">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Quận 7, TP.HCM</span>
+</div>
+</div>
+</article>
+</div>
+<div class="py-16 flex flex-col items-center gap-4">
+<div class="flex items-center gap-3 text-accent/60">
+<span class="material-symbols-outlined text-2xl animate-spin">autorenew</span>
+<span class="text-sm font-medium tracking-wide">Đang tải thêm kết quả...</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
